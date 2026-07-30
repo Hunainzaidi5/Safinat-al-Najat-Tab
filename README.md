@@ -96,11 +96,9 @@ Available in the Settings panel:
 2. Go to `chrome://extensions/` and click the refresh icon on the unpacked extension
 3. Open a new tab to test
 
-### Building for Release
-```bash
-# Create optimized zip archive
-Compress-Archive -Path * -DestinationPath "Fusion-Glass-Tab-Smart-Dashboard-3.0.1.zip"
-```
+### Testing
+1. Go to `chrome://extensions/` and click the refresh icon on the unpacked extension
+2. Open a new tab to test
 
 ## 📦 Optional Third-Party Services
 
