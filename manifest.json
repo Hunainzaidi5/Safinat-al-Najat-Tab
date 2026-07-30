@@ -1,0 +1,49 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "assets/icons/icon-128.png",
+         "16": "assets/icons/icon-16.png",
+         "32": "assets/icons/icon-32.png",
+         "48": "assets/icons/icon-48.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "Safinat al-Najat Tab – Smart Dashboard"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "author": "Hunain Zaidi",
+   "chrome_url_overrides": {
+      "newtab": "newtab.html"
+   },
+   "content_security_policy": {
+      "extension_pages": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.open-meteo.com https://geocoding-api.open-meteo.com https://api.weatherapi.com https://api.bigdatacloud.net https://nominatim.openstreetmap.org https://speed.cloudflare.com https://api.aladhan.com; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'"
+   },
+   "commands": {
+      "toggle-sidebar": {
+         "description": "Open Fusion sidebar",
+         "suggested_key": {
+            "default": "Alt+Shift+F"
+         }
+      }
+   },
+   "description": "Safinat al-Najat Tab – Smart Dashboard: glass-style new tab with Namaz and Ziarat.",
+   "homepage_url": "https://www.linkedin.com/",
+   "host_permissions": [ "https://api.open-meteo.com/*", "https://geocoding-api.open-meteo.com/*", "https://api.weatherapi.com/*", "https://api.bigdatacloud.net/*", "https://nominatim.openstreetmap.org/*", "https://speed.cloudflare.com/*", "https://api.aladhan.com/*", "https://api.ipify.org/*", "https://api64.ipify.org/*", "https://api.my-ip.io/*", "https://ipapi.co/*", "https://checkip.amazonaws.com/*", "https://clients3.google.com/*" ],
+   "icons": {
+      "128": "assets/icons/icon-128.png",
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png",
+      "48": "assets/icons/icon-48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlQtWCtpytxGYD0AYjC/DDdouUnbzL9N7lsku64yNOpdeRGDQx/BFLAfdxMF/Y7qTriq/62/JNcsM4JWN7ggnP+CSprityU1nrM+PVzHaIkDmrD9lriTy2Om2B5XCDYYy2Q4nbRO5rIPDfAobeZ8aZ5pI067VyHPDktmZ+NpkDFgE8kW+EVPpcuxA8+RhzHc6U3/54ZFpvHdM9jAkug0WmNWSs5iyeLRVrlbMVoUAKl2vB8wdw4wuaqAM6yvyZYkr2oF48XANebEPYvcdRrzq5xPW/wRbPXXpuI8XFWTAxocnyeIH8eBHJR5HimyuBUyQDY/6AyHGkvxi7ohHe1blZQIDAQAB",
+   "manifest_version": 3,
+   "name": "Safinat al-Najat Tab – Smart Dashboard",
+   "options_page": "settings/settings.html",
+   "permissions": [ "storage", "search", "geolocation", "sidePanel", "tabs", "alarms", "contextMenus", "system.cpu", "system.memory" ],
+   "side_panel": {
+      "default_path": "newtab.html"
+   },
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.0"
+}

@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Prevent back-forward cache to avoid memory buildup -->
+  <meta http-equiv="Cache-Control" content="no-store">
+  <title>New Tab</title>
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/icon-16.png">
+  <link rel="apple-touch-icon" sizes="128x128" href="assets/icons/icon-128.png">
+  <link rel="stylesheet" href="newtab.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;600;700&display=swap">
+  <script src="early-theme.js"></script>
+</head>
+<body>
+  
+  <!-- Footer Tip (First Run) -->
+  <div class="footer-tip" id="footerTip" style="display:none" role="dialog" aria-label="Tip">
+    <div class="footer-tip-card">
+      <div class="footer-tip-progress" aria-hidden="true">
+        <div class="footer-tip-progress-bar" id="footerTipProgressBar"></div>
+      </div>
+
+      <div class="footer-tip-content">
+        <div class="footer-tip-title">Seeing a banner at the bottom?</div>
+        <div class="footer-tip-text">To hide it, right-click it and select 'Hide Footer on New Tab Page'.</div>
+      </div>
+
+      <button class="footer-tip-btn" id="footerTipGotItBtn" type="button">Got it</button>
+    </div>
+  </div>
+
+  <div class="rail-frame">
+    <span class="rail-corner rail-corner-tl" aria-hidden="true"></span>
+    <span class="rail-corner rail-corner-tr" aria-hidden="true"></span>
+    <span class="rail-corner rail-corner-bl" aria-hidden="true"></span>
+    <span class="rail-corner rail-corner-br" aria-hidden="true"></span>
+    <div class="rail-container" role="marquee" aria-label="Scrolling supplications">
+      <div class="rail-track">
+  
+      <!-- Group 1 — real content, read by screen readers -->
+      <div class="rail-group">
+        <span class="rail-text">اَلسَّلامُ عَلى مُحَمَّدٍ حَبيبِ اللهِ وَ صِفْوَتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى أميرِالْمُؤْمِنينَ عَلِيِّ بْنِ أبي طالِبٍ الْمَخْصُوصِ بِاُخُوَّتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى فاطِمَةَ الزَّهْراءِ ابْنَتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى أبي مُحَمَّدٍ الْحَسَنِ وَصِيِّ أبيهِ وَ خَليفَتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى الْحُسَيْنِ الَّذي سَمَحَتْ نَفْسُهُ بِمُهْجَتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلاَمُ عَلَىٰ ٱلْحُسَيْنِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">وَعَلَىٰ عَلِيِّ بْنِ ٱلْحُسَيْنِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">وَعَلَىٰ أَوْلاَدِ ٱلْحُسَيْنِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">وَعَلَىٰ اَصْحَابِ ٱلْحُسَيْنِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ خاتَمِ الأنْبِياءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ سَيِّدِ الأوْصِياءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ فاطِمَةَ الزَّهْراءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ خَديجَةَ الْكُبْرى</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ سِدْرَةِ الْمُنْتَهى</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ جَنَّةِ الْمَأْوى</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ زَمْزَمَ وَ الصَّفا</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى غَريبِ الْغُرَباءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى شَهيدِ الشُّهَداءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى مَنْ ذُرِّيَّتُهُ الأزْكِياءُ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِ مُحَمَّدٍ وَعَجِّلْ فَرَجَهُمْ</span>
+        <span class="rail-divider"></span>
+      </div>
+  
+      <!-- Group 2 — exact duplicate, hidden from assistive tech, makes the loop seamless -->
+      <div class="rail-group" aria-hidden="true">
+        <span class="rail-text">اَلسَّلامُ عَلى مُحَمَّدٍ حَبيبِ اللهِ وَ صِفْوَتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى أميرِالْمُؤْمِنينَ عَلِيِّ بْنِ أبي طالِبٍ الْمَخْصُوصِ بِاُخُوَّتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى فاطِمَةَ الزَّهْراءِ ابْنَتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى أبي مُحَمَّدٍ الْحَسَنِ وَصِيِّ أبيهِ وَ خَليفَتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى الْحُسَيْنِ الَّذي سَمَحَتْ نَفْسُهُ بِمُهْجَتِهِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلاَمُ عَلَىٰ ٱلْحُسَيْنِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">وَعَلَىٰ عَلِيِّ بْنِ ٱلْحُسَيْنِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">وَعَلَىٰ أَوْلاَدِ ٱلْحُسَيْنِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">وَعَلَىٰ اَصْحَابِ ٱلْحُسَيْنِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ خاتَمِ الأنْبِياءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ سَيِّدِ الأوْصِياءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ فاطِمَةَ الزَّهْراءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ خَديجَةَ الْكُبْرى</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ سِدْرَةِ الْمُنْتَهى</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ جَنَّةِ الْمَأْوى</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلَى ابْنِ زَمْزَمَ وَ الصَّفا</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى غَريبِ الْغُرَباءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى شَهيدِ الشُّهَداءِ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَلسَّلامُ عَلى مَنْ ذُرِّيَّتُهُ الأزْكِياءُ</span>
+        <span class="rail-divider"></span>
+
+        <span class="rail-text">اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَآلِ مُحَمَّدٍ وَعَجِّلْ فَرَجَهُمْ</span>
+        <span class="rail-divider"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Animated Background -->
+  <div class="bg-gradient"></div>
+  <div class="bg-blur-orb orb-1"></div>
+  <div class="bg-blur-orb orb-2"></div>
+  <div class="bg-blur-orb orb-3"></div>
+  <div class="wallpaper background-layer" id="wallpaper"></div>
+
+  <!-- Settings Button -->
+  <button class="settings-btn" id="settingsBtn" type="button" title="Settings" aria-label="Settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+    </svg>
+  </button>
+
+  <!-- ================================================================ -->
+  <!-- BENTO GRID DASHBOARD - 1920×1080 Optimized Layout            -->
+  <!-- 12-column grid with Ziyarat hero as central focal point          -->
+  <!-- ================================================================ -->
+  <div id="bentoGrid" class="bento-grid" aria-label="Widget dashboard">
+
+    <!-- TOP ROW: Greeting, Clock, Search, Weather -->
+    
+    <!-- Greeting (2×1) -->
+    <section class="bento-card glass-card bento-2x1 greeting-card" id="greetingCard" aria-label="Greeting">
+      <div class="greeting-container">
+        <h1 class="greeting-text" id="greetingText">Good Morning</h1>
+        <div class="user-name" id="userName" title="Click to edit name">User</div>
+        <p class="date-text" id="dateText">Friday, December 26</p>
+      </div>
+    </section>
+
+    <!-- Clock & Date (2×1) -->
+    <section class="bento-card glass-card bento-2x1 clock-card" id="clockCard" aria-label="Clock">
+      <div class="clock-container">
+        <div class="clock-face">
+          <span class="hour-num h12">12</span>
+          <span class="hour-num h1">1</span>
+          <span class="hour-num h2">2</span>
+          <span class="hour-num h3">3</span>
+          <span class="hour-num h4">4</span>
+          <span class="hour-num h5">5</span>
+          <span class="hour-num h6">6</span>
+          <span class="hour-num h7">7</span>
+          <span class="hour-num h8">8</span>
+          <span class="hour-num h9">9</span>
+          <span class="hour-num h10">10</span>
+          <span class="hour-num h11">11</span>
+          <div class="hand hour-hand" id="hourHand"></div>
+          <div class="hand minute-hand" id="minuteHand"></div>
+          <div class="hand second-hand" id="secondHand"></div>
+          <div class="center-dot"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Bar (6×1) -->
+    <section class="bento-card glass-card bento-6x1 search-card" id="searchCard" aria-label="Search">
+      <div class="search-input-wrapper">
+        <div class="search-engine-selector" id="searchEngines">
+          <button class="engine-picker-btn" id="enginePickerBtn" type="button" aria-haspopup="menu" aria-expanded="false" title="Search engine">
+            <img class="engine-picker-logo" id="enginePickerLogo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F1F5FD' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7.5'/%3E%3Cpath d='M20 20l-4.2-4.2'/%3E%3C/svg%3E" alt="Default" draggable="false" referrerpolicy="no-referrer">
+          </button>
+
+          <div class="search-engines-menu" id="searchEnginesMenu" role="menu" aria-label="Search engines" hidden>
+            <button class="search-engine-item" type="button" role="menuitem" data-engine="default">
+              <img class="search-engine-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F1F5FD' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='7.5'/%3E%3Cpath d='M20 20l-4.2-4.2'/%3E%3C/svg%3E" alt="Default" draggable="false" referrerpolicy="no-referrer">
+              <span class="search-engine-label">Default</span>
+            </button>
+            <button class="search-engine-item" type="button" role="menuitem" data-engine="google">
+              <img class="search-engine-logo" src="https://www.google.com/favicon.ico" alt="Google" draggable="false" referrerpolicy="no-referrer">
+              <span class="search-engine-label">Google</span>
+            </button>
+            <button class="search-engine-item" type="button" role="menuitem" data-engine="duckduckgo">
+              <img class="search-engine-logo" src="https://duckduckgo.com/favicon.ico" alt="DuckDuckGo" draggable="false" referrerpolicy="no-referrer">
+              <span class="search-engine-label">Duck</span>
+            </button>
+            <button class="search-engine-item" type="button" role="menuitem" data-engine="bing">
+              <img class="search-engine-logo" src="https://www.bing.com/sa/simg/favicon-2x.ico" alt="Bing" draggable="false" referrerpolicy="no-referrer">
+              <span class="search-engine-label">Bing</span>
+            </button>
+            <button class="search-engine-item" type="button" role="menuitem" data-engine="brave">
+              <img class="search-engine-logo" src="https://brave.com/favicon.ico" alt="Brave" draggable="false" referrerpolicy="no-referrer">
+              <span class="search-engine-label">Brave</span>
+            </button>
+            <button class="search-engine-item" type="button" role="menuitem" data-engine="youtube">
+              <img class="search-engine-logo" src="https://www.youtube.com/favicon.ico" alt="YouTube" draggable="false" referrerpolicy="no-referrer">
+              <span class="search-engine-label">YouTube</span>
+            </button>
+          </div>
+        </div>
+        <input type="text" id="searchInput" name="searchInput" placeholder="Search the web..." autocomplete="off" maxlength="2000">
+        <button class="mic-btn" id="micBtn" title="Voice Search" aria-label="Voice search">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Motivational Quote -->
+      <div class="quote-container" id="quoteContainer" style="display: none;">
+        <p class="quote-text" id="quoteText"></p>
+      </div>
+    </section>
+
+    <!-- Weather (2×1) -->
+    <section class="bento-card glass-card bento-2x1 weather-card" id="weatherCard" aria-label="Weather">
+      <div class="weather-main">
+        <div class="weather-icon" id="weatherIcon">☀️</div>
+        <div class="weather-temp">
+          <span class="temp-value" id="tempValue">21</span>
+          <span class="temp-unit">°</span>
+        </div>
+      </div>
+      <div class="weather-details">
+        <div class="weather-condition" id="weatherCondition">Partly Cloudy</div>
+        <div class="weather-location" id="weatherLocationText">Locating...</div>
+        <div class="weather-extra">
+          <span id="weatherHumidity">💧 45%</span>
+          <span id="weatherFeels">🌡️ 20°</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quran Verse (6×1) -->
+    <section class="bento-card glass-card movable-widget quran-verse-widget bento-6x1" id="quranVerseWidget" data-widget-id="quranVerseWidget" aria-label="Daily Quran Verse">
+      <div class="islamic-widget-header">
+        <span class="islamic-widget-icon">📖</span>
+        <h3>Quran Verse</h3>
+        <button class="islamic-widget-refresh" id="quranRefreshBtn" type="button" title="New verse" aria-label="Show next verse">⟳</button>
+      </div>
+      <div class="quran-arabic-verse" id="quranArabicVerse" lang="ar" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+      <div class="quran-english-verse" id="quranEnglishVerse">In the name of Allah, the Most Gracious, the Most Merciful</div>
+      <div class="quran-reference" id="quranReference">Al-Fatiha 1:1</div>
+    </section>
+
+    <!-- Hadith (6×1) -->
+    <section class="bento-card glass-card movable-widget hadith-widget bento-6x1" id="hadithWidget" data-widget-id="hadithWidget" aria-label="Hadith from Ahlul Bayt">
+      <div class="islamic-widget-header">
+        <span class="islamic-widget-icon">✨</span>
+        <h3>Hadith / Ahlul Bayt (a.s.) Quote</h3>
+        <button class="islamic-widget-refresh" id="hadithRefreshBtn" type="button" title="New hadith" aria-label="Show next hadith">⟳</button>
+      </div>
+      <div class="hadith-arabic-text" id="hadithArabicText" lang="ar" dir="rtl"></div>
+      <div class="hadith-english-text" id="hadithEnglishText">Loading…</div>
+      <div class="hadith-source" id="hadithSource"></div>
+    </section>
+
+    <!-- LEFT COLUMN: Islamic Widgets (reflow zone — widgets restack automatically if one is hidden) -->
+    <div class="bento-zone bento-zone-left">
+
+    <!-- Prayer Times (2×2) -->
+    <section class="bento-card glass-card movable-widget bento-2x2" id="prayerTimesWidget" data-widget-id="prayerTimesWidget" aria-label="Prayer times">
+      <div class="prayer-head">
+        <h3>🕌 Prayer Times</h3>
+        <select id="prayerMethodSelect" class="setting-select compact">
+          <option value="jafari">Shia Ithna Ashari</option>
+          <option value="hanafi">Hanafi</option>
+        </select>
+      </div>
+      
+      <!-- Redesigned Next Prayer Banner -->
+      <div class="prayer-next-banner">
+        <div class="prayer-next-info">
+          <span class="prayer-next-title">Next Prayer</span>
+          <div class="prayer-next-name-wrap">
+            <span class="prayer-status-dot pulse" id="prayerStatusDot"></span>
+            <strong id="prayerNextName">--</strong>
+          </div>
+          <span id="prayerNextCountdown" class="prayer-next-countdown">--</span>
+        </div>
+        <div class="prayer-next-time-box">
+          <strong id="prayerNextTime">--:--</strong>
+        </div>
+      </div>
+
+      <div class="prayer-grid" id="prayerTimesGrid"></div>
+    </section>
+
+    <!-- Islamic Date (2×1) -->
+    <section class="bento-card glass-card movable-widget islamic-date-widget bento-2x1" id="islamicDateWidget" data-widget-id="islamicDateWidget" aria-label="Islamic Date">
+      <div class="islamic-widget-header">
+        <span class="islamic-widget-icon">🌙</span>
+        <h3>Islamic Date</h3>
+      </div>
+      <div class="hijri-date-display" id="hijriDateDisplay">
+        <div class="hijri-day" id="hijriDay">--</div>
+        <div class="hijri-month" id="hijriMonth" lang="ar" dir="rtl">--</div>
+        <div class="hijri-year" id="hijriYear">----</div>
+      </div>
+      <div class="hijri-gregorian" id="hijriGregorian">--</div>
+      <div class="hijri-occasion" id="hijriOccasion" style="display:none"></div>
+    </section>
+
+    <!-- Tasbeeh Counter (2×2) -->
+    <section class="bento-card glass-card movable-widget tasbeeh-widget bento-2x2" id="tasbeehWidget" data-widget-id="tasbeehWidget" aria-label="Tasbeeh Counter">
+      <div class="islamic-widget-header">
+        <span class="islamic-widget-icon">📿</span>
+        <h3>تَسْبِيحُ فَاطِمَةَ</h3>
+        <div class="tasbeeh-header-actions">
+          <select class="tasbeeh-mode-select" id="tasbeehMode" aria-label="Tasbeeh target">
+            <option value="34">Allahu Akbar × 34</option>
+            <option value="33-hamd">Alhamdulillah × 33</option>
+            <option value="33-subhan">Subhanallah × 33</option>
+            <option value="custom">Custom…</option>
+          </select>
+        </div>
+      </div>
+      <div class="tasbeeh-counter-area">
+        <button class="tasbeeh-count-btn" id="tasbeehCountBtn" type="button" aria-label="Increment count" title="Tap to count">
+          <span class="tasbeeh-number" id="tasbeehCount">0</span>
+          <span class="tasbeeh-bead-ring" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="tasbeeh-progress-row">
+        <div class="tasbeeh-progress-bar-wrap">
+          <div class="tasbeeh-progress-fill" id="tasbeehProgressFill" style="width:0%"></div>
+        </div>
+        <span class="tasbeeh-target-label" id="tasbeehTargetLabel">/ 33</span>
+      </div>
+      <div class="tasbeeh-actions">
+        <button class="tasbeeh-action-btn" id="tasbeehResetBtn" type="button" title="Reset count">↺ Reset</button>
+        <div class="tasbeeh-phrase" id="tasbeehPhrase" lang="ar" dir="rtl">سُبْحَانَ اللّٰه</div>
+      </div>
+      <div class="tasbeeh-sessions-row" id="tasbeehSessionsRow">
+        <span id="tasbeehSessionsDone">0</span> rounds completed
+      </div>
+    </section>
+
+    </div><!-- /.bento-zone-left -->
+
+    <!-- CENTER HERO: Ziyarat-e-Ashura Player (8×4) -->
+    <section class="bento-card glass-card movable-widget ziyarat-player-widget bento-8x4" id="ziyaratPlayerWidget" data-widget-id="ziyaratPlayerWidget" aria-label="Ziyarat-e-Ashura Player" role="region">
+
+      <!-- Resume Banner (shown when bookmark exists) -->
+      <div class="ziyarat-resume-banner" id="ziyaratResumeBanner" style="display:none" role="alert" aria-live="polite">
+        <svg class="ziyarat-resume-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/><path d="M10 8l6 4-6 4V8z" fill="currentColor" stroke="none"/></svg>
+        <span class="ziyarat-resume-text" id="ziyaratResumeText">Continue from where you left off</span>
+        <button class="ziyarat-resume-btn" id="ziyaratResumeBtn" type="button">Resume</button>
+        <button class="ziyarat-resume-dismiss" id="ziyaratResumeDismiss" type="button" aria-label="Dismiss">✕</button>
+      </div>
+
+      <!-- Player Header -->
+      <div class="ziyarat-header">
+        <div class="ziyarat-title-block">
+          <div class="ziyarat-arabic-title" lang="ar" dir="rtl">يا حسين عليه السلام</div>
+          <div class="ziyarat-latin-title">ZIYARAT-E-ASHURA</div>
+          <div class="ziyarat-subtitle">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+        </div>
+        <div class="ziyarat-header-actions">
+          <button class="ziyarat-bookmark-btn" id="ziyaratBookmarkBtn" type="button" title="Bookmark position (Ctrl+B)" aria-label="Bookmark current position">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2v16z"/></svg>
+          </button>
+          <button class="ziyarat-collapse-btn" id="ziyaratCollapseBtn" type="button" title="Collapse player" aria-label="Collapse Ziyarat player" aria-expanded="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Collapsible content -->
+      <div class="ziyarat-player-body" id="ziyaratPlayerBody">
+
+        <!-- Audio Controls -->
+        <div class="ziyarat-controls" role="group" aria-label="Audio controls">
+          <button class="ziyarat-ctrl-btn ziyarat-play-btn" id="ziyaratPlayBtn" type="button" aria-label="Play Ziyarat" title="Play / Pause (Space)">
+            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <button class="ziyarat-ctrl-btn" id="ziyaratStopBtn" type="button" aria-label="Stop" title="Stop">
+            <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></svg>
+          </button>
+          <button class="ziyarat-ctrl-btn" id="ziyaratPrevBtn" type="button" aria-label="Previous section (Left Arrow)" title="Previous section">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+          </button>
+          <button class="ziyarat-ctrl-btn" id="ziyaratNextBtn" type="button" aria-label="Next section (Right Arrow)" title="Next section">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zm2.5-6 5.5 4V8z"/><rect x="16" y="6" width="2" height="12"/></svg>
+          </button>
+
+          <div class="ziyarat-time-display">
+            <span id="ziyaratCurrentTime">0:00</span>
+            <span class="ziyarat-time-sep">/</span>
+            <span id="ziyaratDuration">0:00</span>
+          </div>
+
+          <div class="ziyarat-speed-wrap">
+            <label class="sr-only" for="ziyaratSpeed">Playback speed</label>
+            <select class="ziyarat-speed-select" id="ziyaratSpeed" aria-label="Playback speed">
+              <option value="0.5">0.5×</option>
+              <option value="0.75">0.75×</option>
+              <option value="1" selected>1×</option>
+              <option value="1.25">1.25×</option>
+              <option value="1.5">1.5×</option>
+            </select>
+          </div>
+
+          <div class="ziyarat-volume-wrap">
+            <svg class="ziyarat-volume-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+            <input type="range" class="ziyarat-volume" id="ziyaratVolume" min="0" max="1" step="0.05" value="1" aria-label="Volume">
+          </div>
+
+          <!-- Translation toggles -->
+          <div class="ziyarat-translation-toggles">
+            <button class="ziyarat-lang-btn active" id="toggleUrduBtn" type="button" data-lang="urdu" aria-pressed="true">اردو</button>
+            <button class="ziyarat-lang-btn" id="toggleEnglishBtn" type="button" data-lang="english" aria-pressed="false">EN</button>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="ziyarat-progress-container" role="group" aria-label="Playback progress">
+          <div class="ziyarat-progress-bar" id="ziyaratProgressBar" role="slider" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+            <div class="ziyarat-progress-fill" id="ziyaratProgressFill"></div>
+            <div class="ziyarat-progress-thumb" id="ziyaratProgressThumb"></div>
+          </div>
+        </div>
+
+        <!-- No Audio Notice -->
+        <div class="ziyarat-no-audio-notice" id="ziyaratNoAudioNotice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
+          <span>Place your audio file at <code>assets/audio/ziyarat_ashura.mp3</code> to enable playback</span>
+        </div>
+
+        <!-- Text Area -->
+        <div class="ziyarat-text-area" id="ziyaratTextArea" lang="ar" dir="rtl" aria-live="polite" aria-label="Ziyarat text">
+          <!-- Paragraphs rendered by JS from ziyarat_ashura.json -->
+          <div class="ziyarat-text-loading" id="ziyaratTextLoading">
+            <div class="ziyarat-loading-orb"></div>
+            <span>Loading Ziyarat text…</span>
+          </div>
+        </div>
+
+      </div><!-- /.ziyarat-player-body -->
+
+      <!-- Hidden audio element -->
+      <audio id="ziyaratAudio" preload="metadata" aria-hidden="true"></audio>
+    </section>
+
+    <!-- RIGHT COLUMN: Productivity Widgets (reflow zone) -->
+    <div class="bento-zone bento-zone-right">
+
+    <!-- Calendar (2×2) -->
+    <section class="bento-card glass-card mini-calendar-card bento-2x2" id="miniCalendarCard" aria-label="Date and Calendar">
+      <div class="mini-calendar-header">
+        <span class="mini-calendar-month" id="miniCalendarMonthYear">January 2026</span>
+        <div class="mini-calendar-header-actions">
+          <button class="mini-calendar-nav-btn" id="miniCalendarResetBtn" type="button" title="Current month" aria-label="Back to current month">Today</button>
+          <button class="mini-calendar-nav-btn" id="miniCalendarNextBtn" type="button" title="Next month" aria-label="Next month">Next</button>
+          <span class="mini-calendar-today-number" id="miniCalendarTodayNumber">1</span>
+        </div>
+      </div>
+      <div class="mini-calendar-today-text" id="miniCalendarTodayText">Thursday, January 1</div>
+      <div class="mini-calendar-weekdays" aria-hidden="true">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="mini-calendar-grid" id="miniCalendarGrid"></div>
+    </section>
+
+    <!-- Notes (2×2) -->
+    <section class="bento-card glass-card movable-widget bento-2x2" id="stickyNotesWidget" data-widget-id="stickyNotesWidget" aria-label="Sticky Notes">
+      <div class="islamic-widget-header">
+        <span class="islamic-widget-icon">🗒️</span>
+        <h3>Notes</h3>
+      </div>
+      <textarea
+        id="stickyNotesText"
+        class="sticky-notes-textarea"
+        placeholder="Write quick notes…"
+        autocapitalize="off"
+        autocomplete="off"
+        spellcheck="false"
+        maxlength="4000"></textarea>
+      <div class="sticky-notes-hint">Saved automatically.</div>
+    </section>
+
+    <!-- System Monitor & Network (Horizontal Row) -->
+    <div class="utility-widgets-row">
+      <!-- System Monitor (1×1) -->
+      <section class="bento-card glass-card movable-widget bento-1x1" id="sessionTrackerWidget" data-widget-id="sessionTrackerWidget" aria-label="System Monitor">
+        <div class="widget-header">
+          <span class="widget-icon">💻</span>
+          <h3>System Monitor</h3>
+        </div>
+        <div class="sys-mon-content">
+          <!-- Browsing Tracking Group -->
+          <div class="sys-mon-group">
+            <div class="utility-row"><span>Browsing</span><strong id="sessionElapsedText">0h 0m</strong></div>
+            <div class="utility-row"><span>Break in</span><strong id="sessionBreakEtaText">45m</strong></div>
+          </div>
+          
+          <div class="sys-mon-divider"></div>
+          
+          <!-- System Performance Group -->
+          <div class="sys-mon-group">
+            <!-- CPU -->
+            <div class="sys-item" id="sysCpuItem">
+              <div class="utility-row">
+                <span class="sys-label">CPU</span>
+                <strong id="sysCpuVal" class="sys-value">--%</strong>
+              </div>
+              <div class="sys-progress-bar">
+                <div id="sysCpuBar" class="sys-progress-fill" style="width: 0%"></div>
+              </div>
+              <div class="sys-subtext" id="sysCpuModel">Detecting CPU...</div>
+            </div>
+            
+            <!-- RAM -->
+            <div class="sys-item" id="sysRamItem">
+              <div class="utility-row">
+                <span class="sys-label">RAM</span>
+                <strong id="sysRamVal" class="sys-value">--%</strong>
+              </div>
+              <div class="sys-progress-bar">
+                <div id="sysRamBar" class="sys-progress-fill" style="width: 0%"></div>
+              </div>
+              <div class="sys-subtext" id="sysRamModel">Detecting RAM...</div>
+            </div>
+            
+            <!-- GPU -->
+            <div class="sys-item" id="sysGpuItem">
+              <div class="utility-row">
+                <span class="sys-label">GPU</span>
+                <strong id="sysGpuVal" class="sys-value">Active</strong>
+              </div>
+              <div class="sys-subtext show-spec" id="sysGpuModel">Detecting GPU...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Network (1×1) -->
+      <section class="bento-card glass-card movable-widget bento-1x1" id="networkInfoWidget" data-widget-id="networkInfoWidget" aria-label="Network">
+        <div class="widget-header">
+          <span class="widget-icon">🌐</span>
+          <h3>Network</h3>
+        </div>
+        <div class="utility-row"><span>Status:</span><strong id="networkStatusBadge">Checking...</strong></div>
+        <div class="utility-row"><span>Type:</span><strong id="networkConnectionType">Checking...</strong></div>
+        <div class="utility-row"><span>Speed:</span><strong id="networkSpeedValue">--</strong></div>
+        <button class="network-speedtest-btn" id="networkSpeedTestBtn" type="button">Run Test</button>
+      </section>
+    </div>
+
+    </div><!-- /.bento-zone-right -->
+
+    <!-- BOTTOM ROW: Utilities (reflow zone — auto-fit, closes gaps if a widget is hidden) -->
+    <div class="bento-zone bento-zone-utility">
+
+    </div><!-- /.bento-zone-utility -->
+
+  </div><!-- /#bentoGrid -->
+
+  <!-- FOOTER BAR -->
+  <footer class="bento-footer" id="bentoFooter">
+    <div class="footer-section">
+      <span class="footer-label">Islamic Date:</span>
+      <span class="footer-value" id="footerIslamicDate">--</span>
+    </div>
+    <div class="footer-section">
+      <span class="footer-label">Hijri:</span>
+      <span class="footer-value" id="footerHijri">--</span>
+    </div>
+    <div class="footer-section">
+      <span class="footer-label">Version:</span>
+      <span class="footer-value">3.0.1</span>
+    </div>
+    <div class="footer-section">
+      <span class="footer-label">Sync:</span>
+      <span class="footer-value" id="syncStatus">Ready</span>
+    </div>
+    <div class="footer-section">
+      <span class="footer-label">Storage:</span>
+      <span class="footer-value" id="storageStatus">--</span>
+    </div>
+    <div class="footer-section">
+      <span class="footer-label">Theme:</span>
+      <span class="footer-value" id="themeStatus">Dark</span>
+    </div>
+    <div class="footer-section">
+      <span class="footer-label">Dev:</span>
+      <span class="footer-value">Hunain Zaidi</span>
+    </div>
+  </footer>
+
+  <!-- App Dock -->
+  <div class="dock-container dock-preload">
+    <div class="dock glass-card" id="appDock">
+      <button class="show-all-apps" id="showAllApps" type="button" title="All Apps" aria-label="Show all apps">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="6" cy="6" r="2"/>
+          <circle cx="12" cy="6" r="2"/>
+          <circle cx="18" cy="6" r="2"/>
+          <circle cx="6" cy="12" r="2"/>
+          <circle cx="12" cy="12" r="2"/>
+          <circle cx="18" cy="12" r="2"/>
+          <circle cx="6" cy="18" r="2"/>
+          <circle cx="12" cy="18" r="2"/>
+          <circle cx="18" cy="18" r="2"/>
+        </svg>
+      </button>
+      <div class="dock-divider"></div>
+      <!-- Apps will be added here by JS -->
+    </div>
+  </div>
+
+  <!-- All Apps Modal -->
+  <div class="modal-overlay" id="appsOverlay"></div>
+  <div class="apps-modal glass-card" id="appsModal">
+    <div class="modal-header">
+      <h2>All Apps</h2>
+      <button class="modal-close" id="closeAppsModal" aria-label="Close apps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <!-- iOS 26 Style Search Bar -->
+    <div class="apps-search-wrapper">
+      <div class="apps-search-bar">
+        <svg class="apps-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="appsSearchInput" name="appsSearchInput" placeholder="Search apps..." autocomplete="off" maxlength="100">
+        <button class="apps-search-clear" id="appsClearSearch" aria-label="Clear search" style="display: none;">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.2)"/>
+            <path d="M15 9l-6 6M9 9l6 6" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="apps-grid" id="appsGrid"></div>
+  </div>
+
+  <!-- Settings Panel -->
+  <div class="modal-overlay" id="settingsOverlay"></div>
+  <aside class="settings-panel" id="settingsPanel">
+    <header class="settings-header">
+      <h2>⚙️ Settings</h2>
+      <button class="modal-close" id="closeSettings" aria-label="Close settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </header>
+    
+    <div class="settings-content">
+      <!-- Clock Section -->
+      <div class="settings-section">
+        <h3>🕐 Clock & Time</h3>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Hide Clock</span>
+            <span class="setting-desc">Hide the clock and date</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleHideClock" name="toggleHideClock">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Digital Clock</span>
+            <span class="setting-desc">Switch to digital clock display</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleDigitalClock" name="toggleDigitalClock">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item" id="setting12Hour" style="display:none">
+          <div class="setting-info">
+            <span class="setting-title">12-Hour Format</span>
+            <span class="setting-desc">Use 12-hour time format</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggle12Hour" name="toggle12Hour">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item" id="settingSeconds" style="display:none">
+          <div class="setting-info">
+            <span class="setting-title">Show Seconds</span>
+            <span class="setting-desc">Display seconds on digital clock</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleSeconds" name="toggleSeconds" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Greeting Section -->
+      <div class="settings-section">
+        <h3>👋 Greeting</h3>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Greeting</span>
+            <span class="setting-desc">Display greeting message</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleGreeting" name="toggleGreeting" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Customizable Text</span>
+            <span class="setting-desc">Show custom name below clock</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleCustomText" name="toggleCustomText" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item column">
+          <label class="setting-title" for="settingsName">Your Name</label>
+          <input type="text" id="settingsName" name="settingsName" class="setting-input" placeholder="Enter your name" maxlength="22">
+        </div>
+      </div>
+
+      <!-- Search Section -->
+      <div class="settings-section">
+        <h3>🔍 Search</h3>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Hide Microphone</span>
+            <span class="setting-desc">If voice typing is not working</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleHideMic" name="toggleHideMic">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Motivational Quotes</span>
+            <span class="setting-desc">Show quotes below search bar</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleQuotes" name="toggleQuotes" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item column">
+          <label class="setting-title" for="voiceLanguageSelect">Voice English Accent</label>
+          <span class="setting-desc">Choose the English language variant for microphone recognition</span>
+          <select id="voiceLanguageSelect" name="voiceLanguageSelect" class="setting-select">
+            <option value="auto">Auto (Browser English)</option>
+            <option value="en-US">English (United States)</option>
+            <option value="en-GB">English (United Kingdom)</option>
+            <option value="en-AU">English (Australia)</option>
+            <option value="en-CA">English (Canada)</option>
+            <option value="en-NZ">English (New Zealand)</option>
+            <option value="en-IE">English (Ireland)</option>
+            <option value="en-ZA">English (South Africa)</option>
+            <option value="en-SG">English (Singapore)</option>
+            <option value="en-PH">English (Philippines)</option>
+            <option value="en-HK">English (Hong Kong)</option>
+            <option value="en-NG">English (Nigeria)</option>
+            <option value="en-KE">English (Kenya)</option>
+            <option value="en-TZ">English (Tanzania)</option>
+            <option value="en-PK">English (Pakistan)</option>
+            <option value="en-GH">English (Ghana)</option>
+            <option value="en-AE">English (United Arab Emirates)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Weather Section -->
+      <div class="settings-section">
+        <h3>🌤️ Weather</h3>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Weather</span>
+            <span class="setting-desc">Display weather widget</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleWeather" name="toggleWeather" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Fahrenheit</span>
+            <span class="setting-desc">Use Fahrenheit instead of Celsius</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleFahrenheit" name="toggleFahrenheit">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item column">
+          <label class="setting-title" for="weatherLocation">Enter your Location</label>
+          <span class="setting-desc">If the weather location isn't correct</span>
+          <div class="input-with-btn">
+            <input type="text" id="weatherLocation" name="weatherLocation" class="setting-input" placeholder="Your City or Coordinates (Latitude, Longitude)" maxlength="120">
+            <button class="save-input-btn" id="saveLocation" aria-label="Save location">Save</button>
+          </div>
+          <a class="help-link" href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Use GPS</span>
+            <span class="setting-desc">Enable GPS for live location updates</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleUseGPS" name="toggleUseGPS">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item column">
+          <label class="setting-title" for="weatherApiKey">Enter your WeatherAPI key</label>
+          <span class="setting-desc">If the weather functionality isn't working</span>
+          <div class="input-with-btn">
+            <input type="password" id="weatherApiKey" name="weatherApiKey" class="setting-input" placeholder="Your WeatherAPI key" maxlength="80">
+            <button class="save-input-btn" id="saveApiKey" aria-label="Save API key">Save</button>
+          </div>
+          <a class="help-link" href="https://www.weatherapi.com/signup.aspx" target="_blank" rel="noopener noreferrer">Create your own API key</a>
+        </div>
+      </div>
+
+      <!-- Apps Section -->
+      <div class="settings-section">
+        <h3>📱 Apps & Dock</h3>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Dock</span>
+            <span class="setting-desc">Display dock with Google apps</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleGoogleApps" name="toggleGoogleApps" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Adaptive Icons</span>
+            <span class="setting-desc">Icons adapt to theme color</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleAdaptiveIcons" name="toggleAdaptiveIcons">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Position On Screen</span>
+          </div>
+          <select class="setting-select" id="dockPosition">
+            <option value="bottom">Bottom ↓</option>
+            <option value="top">Top ↑</option>
+            <option value="left">Left ←</option>
+            <option value="right">Right →</option>
+          </select>
+        </div>
+        
+        <!-- Custom Dock Apps -->
+        <div class="setting-subsection">
+          <div class="subsection-header">
+            <span class="setting-title">Custom Dock Apps</span>
+            <button class="add-dock-btn" id="addDockApp" aria-label="Add dock app">Add</button>
+          </div>
+          <div class="dock-apps-list" id="dockAppsList">
+            <!-- Dynamic dock apps will be rendered here -->
+          </div>
+        </div>
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Sticky Notes</span>
+            <span class="setting-desc">Quick notes widget on screen</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleStickyNotes" name="toggleStickyNotes">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Widget Manager -->
+      <div class="settings-section">
+        <h3>🧩 Widget Manager</h3>
+        <div class="widget-manager-list" id="widgetManagerList">
+          <div class="widget-manager-item" data-widget-key="prayerTimesCard">
+            <span class="setting-title">Prayer Times</span>
+            <label class="toggle-switch"><input type="checkbox" class="wm-visible"><span class="toggle-slider"></span></label>
+            <select class="setting-select wm-size">
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select class="setting-select wm-position">
+              <option value="left">Left</option>
+              <option value="right">Right</option>
+            </select>
+          </div>
+          <div class="widget-manager-item" data-widget-key="networkInfoWidget">
+            <span class="setting-title">Network Info</span>
+            <label class="toggle-switch"><input type="checkbox" class="wm-visible"><span class="toggle-slider"></span></label>
+            <select class="setting-select wm-size">
+              <option value="small">Small</option>
+              <option value="medium">Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select class="setting-select wm-position">
+              <option value="top-left">Top Left</option>
+              <option value="bottom-left">Bottom Left</option>
+            </select>
+          </div>
+
+          <!-- Islamic Widgets group -->
+          <div class="widget-manager-group-label" style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;color:rgba(var(--accent-rgb),0.7);text-transform:uppercase;padding:8px 2px 4px;">🕌 Islamic Widgets</div>
+
+          <div class="widget-manager-item" data-widget-key="ziyaratPlayerWidget">
+            <span class="setting-title">Ziyarat Player</span>
+            <label class="toggle-switch"><input type="checkbox" class="wm-visible"><span class="toggle-slider"></span></label>
+            <select class="setting-select wm-position">
+              <option value="bottom-center">Bottom Center</option>
+              <option value="top-left">Top Left</option>
+              <option value="bottom-left">Bottom Left</option>
+            </select>
+          </div>
+
+          <div class="widget-manager-item" data-widget-key="islamicDateWidget">
+            <span class="setting-title">Islamic Date</span>
+            <label class="toggle-switch"><input type="checkbox" class="wm-visible"><span class="toggle-slider"></span></label>
+            <select class="setting-select wm-size">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select class="setting-select wm-position">
+              <option value="top-right">Top Right</option>
+              <option value="top-left">Top Left</option>
+              <option value="bottom-left">Bottom Left</option>
+              <option value="bottom-right">Bottom Right</option>
+            </select>
+          </div>
+
+          <div class="widget-manager-item" data-widget-key="tasbeehWidget">
+            <span class="setting-title">Tasbeeh Counter</span>
+            <label class="toggle-switch"><input type="checkbox" class="wm-visible"><span class="toggle-slider"></span></label>
+            <select class="setting-select wm-size">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select class="setting-select wm-position">
+              <option value="top-right">Top Right</option>
+              <option value="top-left">Top Left</option>
+              <option value="bottom-right">Bottom Right</option>
+              <option value="bottom-left">Bottom Left</option>
+            </select>
+          </div>
+
+          <div class="widget-manager-item" data-widget-key="quranVerseWidget">
+            <span class="setting-title">Quran Verse</span>
+            <label class="toggle-switch"><input type="checkbox" class="wm-visible"><span class="toggle-slider"></span></label>
+            <select class="setting-select wm-size">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select class="setting-select wm-position">
+              <option value="top-left">Top Left</option>
+              <option value="top-right">Top Right</option>
+              <option value="bottom-left">Bottom Left</option>
+              <option value="bottom-right">Bottom Right</option>
+            </select>
+          </div>
+
+          <div class="widget-manager-item" data-widget-key="hadithWidget">
+            <span class="setting-title">Ahlul Bayt Hadith</span>
+            <label class="toggle-switch"><input type="checkbox" class="wm-visible"><span class="toggle-slider"></span></label>
+            <select class="setting-select wm-size">
+              <option value="small">Small</option>
+              <option value="medium" selected>Medium</option>
+              <option value="large">Large</option>
+            </select>
+            <select class="setting-select wm-position">
+              <option value="bottom-right">Bottom Right</option>
+              <option value="top-right">Top Right</option>
+              <option value="bottom-left">Bottom Left</option>
+              <option value="top-left">Top Left</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================== ISLAMIC SETTINGS ==================== -->
+      <div class="settings-section islamic-settings-section" id="islamicSettingsSection">
+        <h3>🕌 Islamic Dashboard</h3>
+
+        <!-- Muharram Mode -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Muharram Mode</span>
+            <span class="setting-desc">Black theme with red accent for mourning</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleMuharramMode" name="toggleMuharramMode">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Karbala Background -->
+        <div class="setting-item column">
+          <span class="setting-title">Karbala Ambience</span>
+          <span class="setting-desc">Choose background atmosphere</span>
+          <div class="karbala-bg-selector" id="karbalaBgSelector" role="group" aria-label="Karbala background">
+            <button class="karbala-bg-chip active" data-bg="none" type="button">🚫 None</button>
+            <button class="karbala-bg-chip" data-bg="karbala_day" type="button">☀️ Day</button>
+            <button class="karbala-bg-chip" data-bg="karbala_night" type="button">🌙 Night</button>
+            <button class="karbala-bg-chip" data-bg="shrine" type="button">🕌 Shrine</button>
+            <button class="karbala-bg-chip" data-bg="arbaeen" type="button">🚶 Arbaeen</button>
+          </div>
+        </div>
+
+        <!-- Ziyarat Autoplay -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Autoplay Ziyarat</span>
+            <span class="setting-desc">Start playing when tab opens</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleZiyaratAutoplay" name="toggleZiyaratAutoplay">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Show Urdu Translation -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Urdu Translation</span>
+            <span class="setting-desc">Display Urdu beneath Arabic text</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleZiyaratUrdu" name="toggleZiyaratUrdu" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Show English Translation -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show English Translation</span>
+            <span class="setting-desc">Display English beneath Arabic text</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleZiyaratEnglish" name="toggleZiyaratEnglish">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Arabic Font -->
+        <div class="setting-item column">
+          <label class="setting-title" for="arabicFontSelect">Arabic Font</label>
+          <select class="setting-select" id="arabicFontSelect" name="arabicFontSelect">
+            <option value="Amiri">Amiri (Classical)</option>
+            <option value="Scheherazade New">Scheherazade New</option>
+            <option value="serif">System Serif</option>
+          </select>
+        </div>
+
+        <!-- Arabic Font Size -->
+        <div class="setting-item column">
+          <label class="setting-title" for="arabicFontSize">Arabic Text Size</label>
+          <select class="setting-select" id="arabicFontSize" name="arabicFontSize">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+            <option value="xlarge">Extra Large</option>
+          </select>
+        </div>
+
+        <!-- Islamic Widgets visibility -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Islamic Date</span>
+            <span class="setting-desc">Hijri calendar widget</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleIslamicDate" name="toggleIslamicDate" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Hijri Date Offset</span>
+            <span class="setting-desc">Adjust days (+/-) for local moon sighting</span>
+          </div>
+          <div class="hijri-offset-controls">
+            <button type="button" class="offset-btn" id="hijriOffsetMinus" aria-label="Decrease offset">−</button>
+            <input type="number" id="hijriOffsetValue" value="0" min="-3" max="3" class="offset-input">
+            <button type="button" class="offset-btn" id="hijriOffsetPlus" aria-label="Increase offset">+</button>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Tasbeeh Counter</span>
+            <span class="setting-desc">Digital prayer bead counter</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleTasbeeh" name="toggleTasbeeh" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Quran Verse</span>
+            <span class="setting-desc">Daily verse from the Quran</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleQuranWidget" name="toggleQuranWidget" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Ahlul Bayt Hadith</span>
+            <span class="setting-desc">Narrations from Imams (AS)</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleHadithWidget" name="toggleHadithWidget" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Ziyarat Player</span>
+            <span class="setting-desc">Ziyarat-e-Ashura player widget</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleZiyaratPlayer" name="toggleZiyaratPlayer" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Appearance Section -->
+      <div class="settings-section">
+        <h3>🎨 Appearance</h3>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Theme</span>
+          </div>
+          <div class="theme-selector" id="themeSelector">
+            <button class="theme-option active" data-theme="system" title="Auto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+            </button>
+            <button class="theme-option" data-theme="light" title="Light">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+              </svg>
+            </button>
+            <button class="theme-option" data-theme="dark" title="Dark">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="setting-item column">
+          <span class="setting-title">Accent Color</span>
+          <div class="color-grid" id="colorGrid">
+            <button class="color-dot" data-color="#FF3B30" style="--dot-color: #FF3B30"></button>
+            <button class="color-dot" data-color="#FF9500" style="--dot-color: #FF9500"></button>
+            <button class="color-dot" data-color="#FFCC00" style="--dot-color: #FFCC00"></button>
+            <button class="color-dot" data-color="#34C759" style="--dot-color: #34C759"></button>
+            <button class="color-dot active" data-color="#007AFF" style="--dot-color: #007AFF"></button>
+            <button class="color-dot" data-color="#5856D6" style="--dot-color: #5856D6"></button>
+            <button class="color-dot" data-color="#AF52DE" style="--dot-color: #AF52DE"></button>
+            <button class="color-dot" data-color="#FF2D55" style="--dot-color: #FF2D55"></button>
+            <button class="color-dot" data-color="#A2845E" style="--dot-color: #A2845E"></button>
+            <button class="color-dot" data-color="#8E8E93" style="--dot-color: #8E8E93"></button>
+            <button class="color-dot" data-color="#00C7BE" style="--dot-color: #00C7BE"></button>
+            <button class="color-dot" data-color="#000000" style="--dot-color: #000000"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wallpaper Section -->
+      <div class="settings-section">
+        <h3>🖼️ Wallpaper</h3>
+        <div class="wallpaper-preview" id="wallpaperPreview">
+          <span>No wallpaper set</span>
+        </div>
+        <div class="wallpaper-actions">
+          <button class="wallpaper-btn primary" id="uploadWallpaper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+            </svg>
+            Upload
+          </button>
+          <button class="wallpaper-btn" id="randomWallpaper" title="Random">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 3 21 3 21 8"/>
+              <line x1="4" y1="20" x2="21" y2="3"/>
+              <polyline points="21 16 21 21 16 21"/>
+              <line x1="15" y1="15" x2="21" y2="21"/>
+              <line x1="4" y1="4" x2="9" y2="9"/>
+            </svg>
+          </button>
+          <button class="wallpaper-btn danger" id="clearWallpaper" title="Remove">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"/>
+              <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Data Section -->
+      <div class="settings-section">
+        <h3>💾 Data</h3>
+        <div class="data-actions">
+          <button class="data-btn" id="backupSettings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+              <polyline points="17 21 17 13 7 13 7 21"/>
+              <polyline points="7 3 7 8 15 8"/>
+            </svg>
+            Backup
+          </button>
+          <button class="data-btn" id="restoreSettings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="1 4 1 10 7 10"/>
+              <path d="M3.51 15a9 9 0 102.13-9.36L1 10"/>
+            </svg>
+            Restore
+          </button>
+        </div>
+        <button class="reset-btn" id="resetSettings" aria-label="Reset all settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+          </svg>
+          Reset All Settings
+        </button>
+      </div>
+
+      <!-- About & Developer Section -->
+      <div class="settings-section about-section">
+        <div class="about-header">
+          <div class="app-icon-large">
+            <img src="assets/icons/icon-128.png" alt="Safinat al-Najat Tab – Smart Dashboard" draggable="false">
+          </div>
+          <div class="app-info">
+            <h2 class="app-name">Safinat al-Najat Tab – Smart Dashboard</h2>
+            <span class="app-version">Version 3.0.1</span>
+          </div>
+        </div>
+        
+        <div class="developer-info">
+          <h3>👨‍💻 Developer</h3>
+          <div class="developer-card">
+            <div class="developer-avatar">HZ</div>
+            <div class="developer-details">
+              <span class="developer-name">Hunain Zaidi</span>
+              <span class="developer-role">Software developer</span>
+            </div>
+          </div>
+          
+          <div class="developer-links">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="developer-link linkedin">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn Profile
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="developer-link email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20"/>
+                <path d="M12 2a15.3 15.3 0 0 1 0 20"/>
+                <path d="M12 2a15.3 15.3 0 0 0 0 20"/>
+              </svg>
+              Connect with Developer
+            </a>
+          </div>
+        </div>
+
+        <div class="made-with-love">
+          <span>Made with</span>
+          <svg class="heart-icon" viewBox="0 0 24 24" fill="#FF3B30">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span>by <span class="made-with-love-link">Hunain Zaidi</span></span>
+        </div>
+      </div>
+
+      <div class="settings-footer">
+        <p>Safinat al-Najat Tab – Smart Dashboard v3.0.1 • © 2026 Hunain Zaidi</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Name Edit Modal -->
+  <div class="modal-overlay" id="nameOverlay"></div>
+  <div class="name-modal glass-card" id="nameModal">
+    <div class="modal-header">
+      <h2>Edit Name</h2>
+      <button class="modal-close" id="closeNameModal" type="button" aria-label="Close name editor">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="name-modal-content">
+      <input type="text" id="nameInput" name="nameInput" class="name-input" placeholder="Enter your name..." maxlength="22">
+      <button class="save-btn" id="saveNameBtn" type="button" aria-label="Save name">Save</button>
+    </div>
+  </div>
+
+  <input type="file" id="wallpaperInput" name="wallpaperInput" accept="image/*" hidden>
+  <input type="file" id="restoreInput" name="restoreInput" accept=".json" hidden>
+  <input type="file" id="dockIconInput" name="dockIconInput" accept="image/*" hidden>
+
+  <!-- Widget Grid Overlay (shown during drag) -->
+  <div class="widget-grid-overlay" id="widgetGridOverlay" aria-hidden="true">
+    <div class="widget-grid-overlay-inner" id="widgetGridOverlayInner"></div>
+  </div>
+  <!-- Widget Drop Ghost (snap preview) -->
+  <div class="widget-drop-ghost" id="widgetDropGhost" aria-hidden="true"></div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>
