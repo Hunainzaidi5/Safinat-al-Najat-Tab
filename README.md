@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Safinat al-Najat Tab – Smart Dashboard
 
 A privacy-first Chrome extension that replaces your new tab page with a glass-morphism dashboard combining everyday productivity widgets with an integrated Islamic (Shia) devotional toolkit — prayer times, Hadith/Ahlul Bayt quotes, Quran verses, a Tasbeeh counter, and Ziyarat audio.
@@ -163,3 +164,7 @@ This extension is not affiliated with Google Chrome or Google Inc. Chrome is a t
 ---
 
 **Ready to transform your new tab experience?** Install now and enjoy a beautiful, private dashboard rooted in daily remembrance. 🎉
+=======
+# Safinat-al-Najat-Tab
+A privacy-first Chrome extension that replaces your new tab page with a glass-morphism dashboard combining everyday productivity widgets with an integrated Islamic (Shia) devotional toolkit — prayer times, Hadith/Ahlul Bayt quotes, Quran verses, a Tasbeeh counter, and Ziyarat audio.
+>>>>>>> c6b1dc678ab27086e3673a3a4d850cb5bf5be234
