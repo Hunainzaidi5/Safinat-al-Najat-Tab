@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Safinat al-Najat Tab – Smart Dashboard
 
 A privacy-first Chrome extension that replaces your new tab page with a glass-morphism dashboard combining everyday productivity widgets with an integrated Islamic (Shia) devotional toolkit — prayer times, Hadith/Ahlul Bayt quotes, Quran verses, a Tasbeeh counter, and Ziyarat audio.
@@ -123,36 +122,12 @@ All services are contacted directly from your browser — there is no relay thro
 4. Push to the branch (`git push origin feature/awesome-feature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
 ## 👨‍💻 Author
 
 **Hunain Zaidi**
 📧 Email: syedhunainalizaidi@gmail.com
 
-## 📋 Changelog
-
-### Version 3.0.1
-- 🧩 Widget Manager with drag-and-drop rearrangement and per-widget visibility
-- 🕌 Expanded Islamic Dashboard (Prayer Times, Hadith, Quran Verse, Tasbeeh, Ziyarat Player, Islamic Date)
-- 📝 Sticky Notes and Session Tracker widgets
-- 💾 Backup/Restore settings as JSON
-
-### Version 3.0.0
-- 🚀 Major release and version alignment across extension pages
-- 🧾 Updated docs and build artifact naming for 3.0.0 packaging
-
-### Version 2.5.0
-- ✨ Enhanced glass morphism design
-- 🔒 Privacy policy with semantic icons
-- 🎨 Improved theme switching
-- 📍 Optional GPS-based weather with rounded location caching
-- 🛡️ Security hardening for permissions
-- 📱 Better responsive design
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Glass morphism design inspiration from Apple's iOS 17+ and macOS aesthetic
 - Weather data from Open-Meteo and WeatherAPI
@@ -160,11 +135,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ## ⚠️ Disclaimer
 
 This extension is not affiliated with Google Chrome or Google Inc. Chrome is a trademark of Google LLC.
-
----
-
-**Ready to transform your new tab experience?** Install now and enjoy a beautiful, private dashboard rooted in daily remembrance. 🎉
-=======
-# Safinat-al-Najat-Tab
-A privacy-first Chrome extension that replaces your new tab page with a glass-morphism dashboard combining everyday productivity widgets with an integrated Islamic (Shia) devotional toolkit — prayer times, Hadith/Ahlul Bayt quotes, Quran verses, a Tasbeeh counter, and Ziyarat audio.
->>>>>>> c6b1dc678ab27086e3673a3a4d850cb5bf5be234
