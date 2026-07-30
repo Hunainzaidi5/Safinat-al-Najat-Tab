@@ -75,8 +75,7 @@ Available in the Settings panel:
 ├── newtab.css                # Glass morphism styling, themes, layout
 ├── newtab.js                  # Dashboard logic, widgets, storage, search, weather
 ├── early-theme.js           # Applies saved theme before first paint (avoids flash)
-├── popup.html/js            # Extension toolbar popup
-├── privacy.html/css         # Privacy policy page
+├── background.js            # Background service worker
 ├── settings/                 # Liquid glass settings panel (if separated from newtab)
 ├── assets/
 │   ├── audio/                 # Ziyarat/recitation audio files
