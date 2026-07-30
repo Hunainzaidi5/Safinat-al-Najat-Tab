@@ -1,134 +1,346 @@
-# Safinat al-Najat Tab – Smart Dashboard
+# 🕌 Safinat al-Najat Tab
 
-A privacy-first Chrome extension that replaces your new tab page with a glass-morphism dashboard combining everyday productivity widgets with an integrated Islamic (Shia) devotional toolkit — prayer times, Hadith/Ahlul Bayt quotes, Quran verses, a Tasbeeh counter, and Ziyarat audio.
+### A Beautiful Islamic New Tab Dashboard for Google Chrome
 
-## ✨ Features
+> Transform every new tab into a peaceful, productive, and spiritually enriching experience.
 
-### Dashboard & Productivity
-- **Glass Morphism UI** — iOS 17+/macOS-inspired design with light and dark themes (manual or auto/system)
-- **Custom Greeting** — Editable name with time-of-day greeting (Good Morning/Afternoon/Evening)
-- **Live Clock & Islamic Date** — 12/24-hour clock alongside the current Hijri date
-- **Spotlight-Style Search** — Search via Chrome's native search API, with selectable search-engine shortcuts (Google, DuckDuckGo, Bing, Brave, YouTube, etc.)
-- **App Dock & Shortcuts** — Quick-launch dock with custom icons for frequently visited sites/apps
-- **Sticky Notes Widget** — Quick on-page notes saved locally
-- **System Monitor Widget** — At-a-glance network/connection info
-- **Session Tracker Widget** — Tracks time spent in the current browsing session
-- **Accent Colors** — Choose from a curated palette to tint the whole UI
-- **Backup & Restore** — Export/import all settings as a JSON file; one-click reset
+Safinat al-Najat Tab is a **privacy-first Chrome extension** that replaces Chrome's default New Tab page with a modern glass-morphism dashboard inspired by **iOS** and **macOS**.
 
-### Islamic Dashboard
-- **Prayer Times (Namaz)** — Location-based prayer time calculation
-- **Hadith / Ahlul Bayt (a.s.) Quotes** — Rotating quotes widget
-- **Quran Verse Widget** — Rotating verse display
-- **Tasbeeh Counter** — Digital counter for تَسْبِيحُ فَاطِمَةَ (Tasbih of Fatimah)
-- **Ziyarat Player** — Built-in audio player for Ziyarat Ashura and recitations
-- **Scrolling Salutations Rail** — Continuous marquee of salutations (ṣalawāt) at the top of the page
+Designed especially for Muslims—particularly followers of the **Ahlul Bayt (a.s.)**—it combines productivity tools with Islamic widgets, including **Prayer Times, Quran verses, Hadith, Tasbeeh, Ziyarat Ashura audio**, and much more.
 
-### Weather (Optional)
-- **Real-Time Weather** — Powered by Open-Meteo/WeatherAPI
-- **GPS or Manual Location** — Enable browser geolocation for automatic local weather, or set a location manually
-- **Celsius/Fahrenheit** — Switchable temperature units
-- **Privacy-Preserving Caching** — Location is rounded/cached locally to minimize precision sent to weather services
+---
 
-## 🔒 Privacy & Security
+## ✨ Highlights
 
-This extension is **privacy-first** by design:
+* 🎨 Modern Glass Morphism interface
+* 🌙 Light, Dark & Auto themes
+* 🕒 Live Clock & Hijri Calendar
+* 🔍 Spotlight-style Search
+* 🌤️ Weather Widget
+* 🕌 Prayer Times
+* 📖 Quran Verse of the Day
+* 💚 Hadith & Ahlul Bayt (a.s.) Quotes
+* 📿 Digital Tasbeeh Counter
+* 🎧 Built-in Ziyarat Ashura Player
+* 📝 Sticky Notes
+* 🚀 App Dock & Custom Shortcuts
+* 💾 Backup & Restore Settings
+* 🔒 100% Privacy First
 
-✅ **What's Stored Locally (`chrome.storage.local`):**
-- Preferences (theme, accent color, units, greeting name)
-- Widget layout and visibility
-- Shortcuts, dock apps, and search-engine preferences
-- Sticky notes and Tasbeeh counter state
-- Wallpaper and cached weather location
+---
 
-❌ **What We Don't Collect:**
-- No personal browsing history tracking
-- No analytics or usage data
-- No advertising or profiling
-- No backend servers — everything runs locally in your browser
+# 🌟 Features
 
-**Optional Permissions:**
-- **Geolocation** — Only used when you explicitly enable GPS-based weather; not shared with the developer
-- **Storage API** — Stores your preferences locally on your device
-- **Third-Party Requests** — Weather, favicon, and geocoding services (see table below) are contacted directly from your browser, with only the minimum data each feature needs (e.g., rounded coordinates for weather)
+## Productivity Dashboard
 
-## ⚙️ Configuration
+The dashboard is designed to make every new tab useful without becoming distracting.
 
-Available in the Settings panel:
-- **Greeting** — Set your display name
-- **Search** — Default search engine/shortcut
-- **Apps & Dock** — Manage quick-launch shortcuts and their icons
-- **Widget Manager** — Toggle and reorder dashboard widgets (Prayer Times, Hadith, Quran Verse, Tasbeeh, Ziyarat, Notes, System Monitor, Session Tracker, Islamic Date)
-- **Clock & Time** — 12/24-hour format
-- **Islamic Dashboard** — Configure prayer-time location and related widgets
-- **Weather** — Units, manual location, or GPS-based auto-detection
-- **Appearance** — Theme (Dark/Light/Auto) and accent color
-- **Wallpaper** — Upload, randomize, or clear
-- **Data** — Backup, restore, or reset all settings
+### 🎨 Beautiful Interface
 
-## 🛠️ Development
+* Glass Morphism UI
+* Smooth animations
+* Responsive layout
+* Apple-inspired design language
+* Custom accent colors
 
-### Project Structure
+### 👋 Personalized Experience
+
+* Custom greeting
+* Time-based welcome message
+* Live digital clock
+* Islamic (Hijri) calendar
+
+### 🔍 Smart Search
+
+Search directly from the dashboard using your preferred search engine.
+
+Supported engines include:
+
+* Google
+* DuckDuckGo
+* Brave
+* Bing
+* Yahoo
+* YouTube
+* Wikipedia
+* GitHub
+
+### 🚀 Quick Launch Dock
+
+Create your own application dock with:
+
+* Favorite websites
+* Frequently used tools
+* Custom icons
+* Drag-and-drop ordering
+
+### 📝 Sticky Notes
+
+* Save quick notes
+* Stored locally
+* No online account required
+
+### 📊 Session Monitor
+
+Track:
+
+* Browsing session duration
+* Connection information
+* Useful browser statistics
+
+---
+
+# 🕌 Islamic Features
+
+Safinat al-Najat Tab was created to encourage remembrance of Allah (SWT) and the teachings of Prophet Muhammad (ﷺ) and the Ahlul Bayt (a.s.) during everyday browsing.
+
+### 🕋 Prayer Times
+
+* Accurate prayer times
+* Automatic location detection
+* Manual location support
+
+---
+
+### 📖 Quran Verse Widget
+
+Displays rotating verses from the Holy Quran.
+
+---
+
+### 💚 Hadith & Ahlul Bayt (a.s.)
+
+A collection of sayings from the Prophet (ﷺ) and the Holy Ahlul Bayt (a.s.).
+
+---
+
+### 📿 Tasbeeh Counter
+
+Digital counter for:
+
+**Tasbih of Sayyida Fatimah al-Zahra (a.s.)**
+
+* 34 × Allahu Akbar
+* 33 × Alhamdulillah
+* 33 × SubhanAllah
+
+---
+
+### 🎧 Ziyarat Ashura Player
+
+Listen directly from your New Tab page.
+
+Includes:
+
+* Audio playback
+* Progress controls
+* Background playback support
+
+---
+
+### 🤲 Salawat Banner
+
+Continuous scrolling Salawat displayed elegantly across the top of the dashboard.
+
+---
+
+# 🌤️ Weather
+
+Optional weather widget featuring:
+
+* Current weather
+* Temperature
+* GPS location
+* Manual location
+* Celsius/Fahrenheit
+* Local caching for privacy
+
+---
+
+# 🔒 Privacy First
+
+Your privacy is the highest priority.
+
+## ✅ Stored Locally
+
+Everything is stored inside your browser using `chrome.storage.local`.
+
+Examples include:
+
+* Theme
+* Greeting
+* Widgets
+* Notes
+* Tasbeeh count
+* Wallpapers
+* Preferences
+
+## ❌ Never Collected
+
+* Browsing history
+* Personal information
+* Analytics
+* Advertisements
+* User tracking
+* Telemetry
+
+No backend servers are used.
+
+Your data never passes through developer-owned infrastructure.
+
+---
+
+# ⚙️ Settings
+
+Customize nearly every part of the dashboard.
+
+* Appearance
+* Greeting
+* Search
+* Wallpaper
+* Dock Apps
+* Widget Visibility
+* Weather
+* Prayer Location
+* Theme
+* Accent Color
+* Clock Format
+* Backup & Restore
+
+---
+
+# 📦 Installation
+
+## Developer Mode
+
+1. Clone this repository
+
+```bash
+git clone https://github.com/Hunainzaidi5/Safinat-al-Najat-Tab.git
 ```
-├── manifest.json           # Chrome extension manifest
-├── newtab.html              # New tab page markup (dashboard, widgets, settings panel)
-├── newtab.css                # Glass morphism styling, themes, layout
-├── newtab.js                  # Dashboard logic, widgets, storage, search, weather
-├── early-theme.js           # Applies saved theme before first paint (avoids flash)
-├── background.js            # Background service worker
-├── settings/                 # Liquid glass settings panel (if separated from newtab)
-├── assets/
-│   ├── audio/                 # Ziyarat/recitation audio files
-│   ├── backgrounds/         # Bundled wallpapers
-│   ├── data/                  # JSON data (Quran verses, Hadiths, Ziyarat text)
-│   └── icons/                 # Extension icons
+
+2. Open Chrome
+
+3. Navigate to:
+
+```
+chrome://extensions
 ```
 
-### Technologies Used
-- **HTML5** — Semantic markup
-- **CSS3** — Glass morphism, CSS Grid, Flexbox, CSS Variables
-- **JavaScript (ES6+)** — Chrome Storage API, Chrome Search API, Geolocation API
-- **Chrome APIs** — `storage`, `search`, `tabs`, `scripting`
+4. Enable **Developer Mode**
 
-### Local Development
-1. Make changes to the source files
-2. Go to `chrome://extensions/` and click the refresh icon on the unpacked extension
-3. Open a new tab to test
+5. Click **Load unpacked**
 
-### Testing
-1. Go to `chrome://extensions/` and click the refresh icon on the unpacked extension
-2. Open a new tab to test
+6. Select the project folder.
 
-## 📦 Optional Third-Party Services
+Done.
 
-| Service | Purpose | Data Sent | Optional |
-|---------|---------|-----------|----------|
-| **Open-Meteo** | Weather data | Rounded coordinates | ✅ Yes |
-| **WeatherAPI** | Weather data | Rounded coordinates | ✅ Yes |
-| **BigDataCloud** | Reverse geolocation | IP address | ✅ Yes |
-| **Nominatim** | Reverse geocoding | Coordinates | ✅ Yes |
-| **Google Favicon Service / DuckDuckGo** | Favicon fetching for dock/shortcuts | Domain name | ✅ Yes |
+---
 
-All services are contacted directly from your browser — there is no relay through developer-owned servers.
+# 📁 Project Structure
 
-## 🤝 Contributing
+```
+manifest.json
+background.js
+newtab.html
+newtab.css
+newtab.js
+early-theme.js
+
+assets/
+ ├── audio/
+ ├── backgrounds/
+ ├── data/
+ └── icons/
+
+settings/
+```
+
+---
+
+# 🛠 Technologies
+
+* HTML5
+* CSS3
+* JavaScript (ES6)
+* Chrome Extension APIs
+* Chrome Storage API
+* Search API
+* Geolocation API
+
+---
+
+# 🌍 Third-Party Services
+
+| Service        | Purpose           |
+| -------------- | ----------------- |
+| Open-Meteo     | Weather           |
+| WeatherAPI     | Weather           |
+| BigDataCloud   | Reverse Geocoding |
+| Nominatim      | Location Lookup   |
+| Google Favicon | Website Icons     |
+
+These services are contacted directly by your browser.
+
+No developer server acts as an intermediary.
+
+---
+
+# 🤝 Contributing
+
+Contributions are always welcome.
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/awesome-feature`)
-3. Make your changes with clear commit messages
-4. Push to the branch (`git push origin feature/awesome-feature`)
+2. Create a feature branch
+3. Commit your changes
+4. Push the branch
 5. Open a Pull Request
 
-## 👨‍💻 Author
+---
+
+# 📌 Roadmap
+
+* [ ] Chrome Web Store release
+* [ ] Firefox support
+* [ ] Edge support
+* [ ] Daily Duas
+* [ ] Nahj al-Balagha widget
+* [ ] Sahifa Sajjadiya widget
+* [ ] More recitations
+* [ ] Additional languages
+
+---
+
+# 👨‍💻 Author
 
 **Hunain Zaidi**
 📧 Email: syedhunainalizaidi@gmail.com
+---
 
-## Acknowledgments
+# 🙏 Acknowledgements
 
-- Glass morphism design inspiration from Apple's iOS 17+ and macOS aesthetic
-- Weather data from Open-Meteo and WeatherAPI
+Inspired by:
 
-## ⚠️ Disclaimer
+* Apple's Human Interface Guidelines
+* Glass Morphism design
+* The teachings of the Holy Quran
+* Prophet Muhammad (ﷺ)
+* The Holy Ahlul Bayt (a.s.)
 
-This extension is not affiliated with Google Chrome or Google Inc. Chrome is a trademark of Google LLC.
+---
+
+# ⚠️ Disclaimer
+
+This project is an independent open-source Chrome extension and is not affiliated with or endorsed by Google LLC.
+
+Chrome is a trademark of Google LLC.
+
+---
+
+## ⭐ Support the Project
+
+If you found this project useful, please consider giving it a **Star ⭐** on GitHub.
+
+It helps others discover the project and motivates future development.
+
+[![GitHub stars](https://img.shields.io/github/stars/Hunainzaidi5/Safinat-al-Najat-Tab?style=social)](https://github.com/Hunainzaidi5/Safinat-al-Najat-Tab/stargazers)
