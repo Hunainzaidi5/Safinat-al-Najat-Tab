@@ -6,7 +6,6 @@
          "32": "assets/icons/icon-32.png",
          "48": "assets/icons/icon-48.png"
       },
-      "default_popup": "popup.html",
       "default_title": "Safinat al-Najat Tab – Smart Dashboard"
    },
    "background": {
