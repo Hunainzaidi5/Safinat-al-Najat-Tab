@@ -617,6 +617,24 @@
     <!-- BOTTOM ROW: Utilities (reflow zone — auto-fit, closes gaps if a widget is hidden) -->
     <div class="bento-zone bento-zone-utility">
 
+      <!-- Nahj al-Balagha -->
+      <section class="bento-card glass-card movable-widget nehj-widget" id="nehjWidget" data-widget-id="nehjWidget" aria-label="Nahj al-Balagha">
+        <div class="islamic-widget-header">
+          <span class="islamic-widget-icon">📕</span>
+          <h3>Nahj al-Balagha</h3>
+          <button class="islamic-widget-refresh" id="nehjRefreshBtn" type="button" title="New passage" aria-label="Show next passage">⟳</button>
+        </div>
+        <div class="nehj-tabs" role="tablist" aria-label="Nahj al-Balagha section">
+          <button class="nehj-tab active" id="nehjTabAll" type="button" data-cat="all" role="tab" aria-selected="true">All</button>
+          <button class="nehj-tab" id="nehjTabSermons" type="button" data-cat="sermon" role="tab" aria-selected="false">Sermons</button>
+          <button class="nehj-tab" id="nehjTabLetters" type="button" data-cat="letter" role="tab" aria-selected="false">Letters</button>
+          <button class="nehj-tab" id="nehjTabSayings" type="button" data-cat="saying" role="tab" aria-selected="false">Sayings</button>
+        </div>
+        <div class="nehj-arabic-text" id="nehjArabicText" lang="ar" dir="rtl"></div>
+        <div class="nehj-english-text" id="nehjEnglishText">Loading…</div>
+        <div class="nehj-source" id="nehjSource"></div>
+      </section>
+
     </div><!-- /.bento-zone-utility -->
 
   </div><!-- /#bentoGrid -->
@@ -1200,6 +1218,17 @@
           </div>
           <label class="toggle-switch">
             <input type="checkbox" id="toggleHadithWidget" name="toggleHadithWidget" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span class="setting-title">Show Nahj al-Balagha</span>
+            <span class="setting-desc">Sermons, letters and sayings of Imam Ali (AS)</span>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleNehjWidget" name="toggleNehjWidget" checked>
             <span class="toggle-slider"></span>
           </label>
         </div>

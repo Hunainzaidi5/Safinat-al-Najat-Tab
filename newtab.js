@@ -3896,6 +3896,7 @@ const DEFAULT_WIDGET_MANAGER_STATE = Object.freeze({
   tasbeehWidget:        { visible: true,  size: 'medium', position: 'top-right' },
   quranVerseWidget:     { visible: true,  size: 'medium', position: 'top-left' },
   hadithWidget:         { visible: true,  size: 'medium', position: 'bottom-right' },
+  nehjWidget:           { visible: true,  size: 'medium', position: 'bottom-right' },
 });
 
 function getWidgetManagerState() {
@@ -8022,7 +8023,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const ISLAMIC_DEFAULTS = {
   muharramMode: false, ziyaratAutoplay: false, ziyaratUrdu: true, ziyaratEnglish: false,
   arabicFont: 'Amiri', arabicFontSize: 'medium', showIslamicDate: true, showTasbeeh: true,
-  showQuranWidget: true, showHadithWidget: true, showZiyaratPlayer: true, karbalaBg: 'none',
+  showQuranWidget: true, showHadithWidget: true, showNehjWidget: true, showZiyaratPlayer: true, karbalaBg: 'none',
   hijriOffset: 0,
 };
 const ISLAMIC_SETTINGS_KEY = 'islamicDashboardSettings';
@@ -8206,6 +8207,75 @@ async function initHadithWidget() {
   if (btn) btn.addEventListener('click', () => { _hadithIndex=(_hadithIndex+1)%hadiths.length; showHadith(hadiths,_hadithIndex); btn.style.transform='rotate(360deg)'; setTimeout(()=>{btn.style.transform='';},400); });
 }
 
+// ---- Nahj al-Balagha Widget ----
+// Paraphrased (not verbatim-quoted) passages from Nahj al-Balagha, Sharif
+// al-Razi's classical compilation of sermons, letters, and short sayings of
+// Imam Ali (AS). Traditional reference numbers are included where an entry
+// corresponds to a well-documented, specifically numbered sermon/letter/saying;
+// broader thematic entries are labeled generically instead of guessing a number.
+const NEHJ_ENTRIES = [
+  { category: 'sermon', arabic: '', english: 'The universe and its wonders point to a Creator who has always existed, unmatched by anything.', source: 'Sermon 1 — On the Creation of the World' },
+  { category: 'sermon', arabic: '', english: 'Whatever this world offers is only ever temporary — do not be fooled by its charm.', source: 'Sermons — On the Nature of the World' },
+  { category: 'letter', arabic: '', english: 'Begin reforming yourself before trying to guide or correct anyone else.', source: 'Letter 31 — Counsel to Imam Hasan (AS)' },
+  { category: 'letter', arabic: '', english: 'A ruler must treat people with mercy, since all share a common humanity or faith.', source: 'Letter 53 — Instructions to Malik al-Ashtar' },
+  { category: 'saying', arabic: 'الْعِلْمُ يَحْرُسُكَ وَأَنْتَ تَحْرُسُ الْمَالَ', english: 'Knowledge protects you, while wealth constantly demands your protection.', source: 'Saying 147' },
+  { category: 'saying', arabic: 'الصَّبْرُ صَبْرَانِ: صَبْرٌ عَلَى مَا تَكْرَهُ، وَصَبْرٌ عَمَّا تُحِبُّ', english: 'Patience takes two forms: bearing what hurts you, and resisting what tempts you.', source: 'Saying 55' },
+  { category: 'saying', arabic: 'خَيْرُ عُقُوبَةِ الْعَدُوِّ الْإِحْسَانُ إِلَيْهِ', english: "Meeting an enemy's harm with kindness is the wisest form of justice.", source: 'Saying 11' },
+  { category: 'saying', arabic: 'الْمَرْءُ مَخْبُوءٌ تَحْتَ لِسَانِهِ', english: "A person's true character is concealed beneath what they choose to say.", source: 'Saying 148' },
+  { category: 'saying', arabic: '', english: "A hoarder's riches help no one, much like a stone stuck in flowing water.", source: 'Saying 123' },
+  { category: 'saying', arabic: '', english: 'Someone ungrateful for small blessings will never appreciate greater ones.', source: 'Saying 162' },
+];
+
+let _nehjIndex = 0;
+let _nehjCategory = 'all';
+
+function nehjFiltered() {
+  return _nehjCategory === 'all' ? NEHJ_ENTRIES : NEHJ_ENTRIES.filter(e => e.category === _nehjCategory);
+}
+
+function showNehj() {
+  const list = nehjFiltered();
+  if (!list.length) return;
+  const item = list[_nehjIndex % list.length];
+  const el = (id) => document.getElementById(id);
+  if (el('nehjArabicText')) {
+    el('nehjArabicText').textContent = item.arabic || '';
+    el('nehjArabicText').style.display = item.arabic ? '' : 'none';
+  }
+  if (el('nehjEnglishText')) el('nehjEnglishText').textContent = item.english || '';
+  if (el('nehjSource')) el('nehjSource').textContent = item.source || '';
+}
+
+function initNehjWidget() {
+  const cfg = loadIslamicSettings();
+  const widget = document.getElementById('nehjWidget');
+  if (!widget) return;
+  if (!cfg.showNehjWidget) { widget.style.display = 'none'; return; }
+  const now = new Date();
+  _nehjIndex = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000) % NEHJ_ENTRIES.length;
+  showNehj();
+
+  const btn = document.getElementById('nehjRefreshBtn');
+  if (btn) btn.addEventListener('click', () => {
+    _nehjIndex = (_nehjIndex + 1) % nehjFiltered().length;
+    showNehj();
+    btn.style.transform = 'rotate(360deg)';
+    setTimeout(() => { btn.style.transform = ''; }, 400);
+  });
+
+  const tabs = widget.querySelectorAll('.nehj-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      _nehjCategory = tab.getAttribute('data-cat') || 'all';
+      _nehjIndex = 0;
+      showNehj();
+    });
+  });
+}
+
 // ---- Ziyarat Player ----
 const ZiyaratPlayer = (() => {
   let _data=null, _audio=null, _rafId=null, _isDragging=false, _lastParaIdx=-1;
@@ -8367,7 +8437,7 @@ function applyIslamicSettings(cfg) {
   applyArabicFont(cfg.arabicFont||'Amiri');
   applyArabicFontSize(cfg.arabicFontSize||'medium');
   applyKarbalaBg(cfg.karbalaBg||'none');
-  const vis = { islamicDateWidget:cfg.showIslamicDate, tasbeehWidget:cfg.showTasbeeh, quranVerseWidget:cfg.showQuranWidget, hadithWidget:cfg.showHadithWidget, ziyaratPlayerWidget:cfg.showZiyaratPlayer };
+  const vis = { islamicDateWidget:cfg.showIslamicDate, tasbeehWidget:cfg.showTasbeeh, quranVerseWidget:cfg.showQuranWidget, hadithWidget:cfg.showHadithWidget, nehjWidget:cfg.showNehjWidget, ziyaratPlayerWidget:cfg.showZiyaratPlayer };
   Object.entries(vis).forEach(([id,show])=>{ const el=document.getElementById(id); if(el)el.style.display=(show===false)?'none':''; });
   document.body.classList.toggle('ziyarat-hide-urdu',   !cfg.ziyaratUrdu);
   document.body.classList.toggle('ziyarat-hide-english',!cfg.ziyaratEnglish);
@@ -8424,6 +8494,7 @@ function initIslamicSettingsPanel() {
   wireCheck('toggleTasbeeh','showTasbeeh');
   wireCheck('toggleQuranWidget','showQuranWidget');
   wireCheck('toggleHadithWidget','showHadithWidget');
+  wireCheck('toggleNehjWidget','showNehjWidget');
   wireCheck('toggleZiyaratPlayer','showZiyaratPlayer');
   wireSel('arabicFontSelect','arabicFont');
   wireSel('arabicFontSize','arabicFontSize');
@@ -8443,6 +8514,7 @@ function initIslamicDashboard() {
   initIslamicSettingsPanel();
   void initQuranVerseWidget();
   void initHadithWidget();
+  initNehjWidget();
   void ZiyaratPlayer.init();
 }
 

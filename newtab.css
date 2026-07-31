@@ -8267,6 +8267,70 @@ body.ziyarat-hide-english .para-english { display: none; }
 }
 
 /* ================================================================ */
+/* === NAHJ AL-BALAGHA WIDGET                                     === */
+/* ================================================================ */
+
+.nehj-widget {
+  padding: 16px 18px;
+}
+
+.nehj-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.nehj-tab {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 4px 12px;
+  transition: all var(--transition);
+}
+
+.nehj-tab:hover {
+  border-color: rgba(var(--accent-rgb), 0.4);
+  color: var(--text);
+}
+
+.nehj-tab.active {
+  background: rgba(var(--accent-rgb), 0.18);
+  border-color: rgba(var(--accent-rgb), 0.5);
+  color: var(--accent);
+}
+
+.nehj-arabic-text {
+  font-family: var(--arabic-font);
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--text);
+  direction: rtl;
+  text-align: right;
+  margin: 10px 0 8px;
+}
+
+.nehj-english-text {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  direction: ltr;
+  margin-bottom: 8px;
+}
+
+.nehj-source {
+  font-size: 0.7rem;
+  color: rgba(var(--accent-rgb), 0.65);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ================================================================ */
 /* === ISLAMIC SETTINGS PANEL STYLES                              === */
 /* ================================================================ */
 
@@ -8476,8 +8540,10 @@ body.ziyarat-hide-english .para-english { display: none; }
 /* Arabic text in narrow column */
 #dashboardColLeft  .quran-arabic-verse,
 #dashboardColLeft  .hadith-arabic-text,
+#dashboardColLeft  .nehj-arabic-text,
 #dashboardColRight .quran-arabic-verse,
-#dashboardColRight .hadith-arabic-text {
+#dashboardColRight .hadith-arabic-text,
+#dashboardColRight .nehj-arabic-text {
   font-size: 1.05em;
   line-height: 1.65;
 }
